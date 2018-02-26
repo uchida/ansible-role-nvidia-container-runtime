@@ -14,7 +14,7 @@
 - name: nvidia-container-runtime apt repositories are registered
   apt_repository:
     repo: "{{ item }}"
-    filename: nvidia-container
+    filename: nvidia-container-runtime
     state: present
     mode: 0644
     update_cache: yes
