@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Akihiro Uchida
+  description: ansible role to install nvidia-container-runtime
+  license: CC0
+  min_ansible_version: 2.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+  galaxy_tags:
+    - docker
+    - nvidia
+dependencies:
+  - role: uchida.docker
+    docker_version: nvidia_container_runtime_docker_version
+  - uchida.nvidia-driver
