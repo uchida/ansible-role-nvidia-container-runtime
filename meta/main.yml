@@ -12,5 +12,5 @@ galaxy_info:
     - nvidia
 dependencies:
   - role: uchida.docker
-    docker_ce_version: nvidia_container_runtime_docker_version
+    docker_ce_version: "{{ nvidia_container_runtime_docker_version }}"
   - uchida.nvidia-driver
