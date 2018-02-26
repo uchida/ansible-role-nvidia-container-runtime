@@ -8,11 +8,11 @@ Role Variables
 
 ```
 nvidia_container_runtime_version: '*'
-nvidia_container_docker_version: '*'
+nvidia_container_runtime_docker_version: '*'
 ```
 
 - `nvidia_container_runtime_version` is a variable to specify which version of nvidia-container-runtime, current default value is `'*'`
-- `nvidia_container_dockerr_version` is a variable to specify which version of docker, current default value is `'*'`
+- `nvidia_container_docker_version` is a variable to specify which version of docker, current default value is `'*'`
 
 Dependencies
 ------------
