@@ -1,6 +1,11 @@
 uchida.nvidia-container-runtime
 ===============================
 
+[![Ansible Role](https://img.shields.io/ansible/role/24081.svg?maxAge=2592000)](https://galaxy.ansible.com/uchida/nvidia-container-runtime/)
+![Version](https://img.shields.io/github/tag/uchida/ansible-role-nvidia-container-runtime.svg)
+[![License](https://img.shields.io/github/license/uchida/ansible-role-nvidia-container-runtime.svg?maxAge=2592000)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
+[![Travis](https://img.shields.io/travis/uchida/ansible-role-nvidia-container-runtime.svg)](https://travis-ci.org/uchida/ansible-role-nvidia-container-runtime)
+
 ansible role to install nvidia-container-runtime and graphics driver
 
 Role Variables
