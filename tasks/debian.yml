@@ -26,3 +26,4 @@
   apt:
     name: "nvidia-container-runtime={{ nvidia_container_runtime_version }}+docker{{ nvidia_container_runtime_docker_version }}-1"
     state: present
+  when: not ansible_check_mode
