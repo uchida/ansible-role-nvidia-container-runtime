@@ -9,7 +9,7 @@
   apt:
     name: software-properties-common
     state: present
-    update_cache: yes
+    update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
 
 - name: nvidia-container-runtime apt repositories are registered
   apt_repository:
@@ -17,7 +17,7 @@
     filename: nvidia-container-runtime
     state: present
     mode: 0644
-    update_cache: yes
+    update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
   with_items:
     - 'deb https://nvidia.github.io/libnvidia-container/ubuntu16.04/amd64 /'
     - 'deb https://nvidia.github.io/nvidia-container-runtime/ubuntu16.04/amd64 /'
