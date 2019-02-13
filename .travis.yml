@@ -3,6 +3,8 @@ language: python
 
 env:
   - IMAGE=ubuntu TAG=xenial
+  - IMAGE=ubuntu TAG=bionic
+  - IMAGE=ubuntu TAG=cosmic
 
 dist: trusty
 sudo: required
