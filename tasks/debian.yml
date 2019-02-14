@@ -21,9 +21,15 @@
   with_items:
     - 'deb https://nvidia.github.io/libnvidia-container/{{ ansible_distribution | lower }}{{ ansible_distribution_version }}/amd64 /'
     - 'deb https://nvidia.github.io/nvidia-container-runtime/{{ ansible_distribution | lower }}{{ ansible_distribution_version }}/amd64 /'
+  register: nvidia_container_runtime_apt_repo
+
+- name: set fact for apt repository already exists or not
+  set_fact:
+    nvidia_container_runtime_apt_repo_exists: "{{ nvidia_container_runtime_apt_repo_exists|default(true) and not item.changed|default(true) }}"
+  with_items: "{{ nvidia_container_runtime_apt_repo.results }}"
 
 - name: nvidia-container-runtime is installed
   apt:
     name: "nvidia-container-runtime={{ nvidia_container_runtime_specific_version | regex_search('([^*]*)') }}*"
     state: present
-  when: not ansible_check_mode
+  when: not ansible_check_mode or nvidia_container_runtime_apt_repo_exists
