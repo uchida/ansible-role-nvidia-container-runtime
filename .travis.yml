@@ -31,7 +31,7 @@ before_script:
 script:
   - ansible-playbook -i localhost, --syntax-check tests/test.yml
   - ansible-lint tests/test.yml
-  - ansible-playbook -i test, tests/test.yml
+  - travis_wait ansible-playbook -i test, tests/test.yml
 
 notifications:
   email: false
