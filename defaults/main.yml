@@ -2,3 +2,4 @@
 
 nvidia_container_runtime_version: '*'
 nvidia_container_runtime_docker_version: '*'
+nvidia_container_runtime_revision: '*'
