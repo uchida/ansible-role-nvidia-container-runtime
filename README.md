@@ -12,12 +12,16 @@ Role Variables
 --------------
 
 ```
-nvidia_container_runtime_version: '*'
-nvidia_container_runtime_docker_version: '*'
+nvidia_container_runtime_version
+nvidia_container_runtime_docker_version
+nvidia_container_runtime_revision
 ```
 
-- `nvidia_container_runtime_version` is a variable to specify which version of nvidia-container-runtime, current default value is `'*'`
-- `nvidia_container_runtume_docker_version` is a variable to specify which version of docker, current default value is `'*'`
+- `nvidia_container_runtime_version` is a variable to specify which version of nvidia-container-runtime. if this variable is not set install latest version.
+- `nvidia_container_runtime_docker_version` is a variable to specify which version of docker. it only works when `nvidia_container_runtime_version` is set and does not include `*`.
+- `nvidia_container_runtime_revision` is a variable to specify which version of docker. it only works when `nvidia_container_runtime_version` and `nvidia_container_runtime_docker_version` is set and do not include `*`.
+
+Roughly speaking, this role install `nvidia_container_runtime={{ nvidia_container_runtime_version }}+docker{{ nvidia_container_runtime_docker_version }}-{{ nvidia_container_runtime_revision }}`.
 
 Dependencies
 ------------
@@ -44,6 +48,14 @@ install nvidia-container-runtime version 1.1.1:
   roles:
     - role: uchida.nvidia-container-runtime
       nvidia_container_runtime_version: 1.1.1
+```
+
+```
+- hosts: servers
+  roles:
+    - role: uchida.nvidia-container-runtime
+      nvidia_container_runtime_version: 2.0.0
+      nvidia_container_runtime_docker_version: 5:18.09.2* # accepts epoch and revision in deb-version(5)
 ```
 
 License
