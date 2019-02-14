@@ -23,10 +23,10 @@
     - 'deb https://nvidia.github.io/nvidia-container-runtime/{{ ansible_distribution | lower }}{{ ansible_distribution_version }}/amd64 /'
   register: nvidia_container_runtime_apt_repo
 
-- set_fact:
+- name: set fact for apt repository already exists or not
+  set_fact:
     nvidia_container_runtime_apt_repo_exists: "{{ nvidia_container_runtime_apt_repo_exists|default(true) and item.changed }}"
-  with_items:
-    nvidia_container_runtime_apt_repo.results
+  with_items: "{{ nvidia_container_runtime_apt_repo.results }}"
 
 - name: nvidia-container-runtime is installed
   apt:
