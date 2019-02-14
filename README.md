@@ -55,7 +55,15 @@ install nvidia-container-runtime version 1.1.1:
   roles:
     - role: uchida.nvidia-container-runtime
       nvidia_container_runtime_version: 2.0.0
-      nvidia_container_runtime_docker_version: 5:18.09.2* # accepts epoch and revision in deb-version(5)
+      nvidia_container_runtime_docker_version: 5:18.09.2* # accepts epoch in deb-version(5)
+```
+
+```
+- hosts: servers
+  roles:
+    - role: uchida.nvidia-container-runtime
+      nvidia_container_runtime_version: 2.0.0
+      nvidia_container_runtime_docker_version: 5:18.09.2~3-0~ubuntu-xenial # accepts epoch and revision in deb-version(5)
 ```
 
 License
