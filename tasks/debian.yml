@@ -24,6 +24,6 @@
 
 - name: nvidia-container-runtime is installed
   apt:
-    name: "nvidia-container-runtime={{ nvidia_container_runtime_version }}+docker{{ nvidia_container_runtime_docker_version }}-1"
+    name: "nvidia-container-runtime={{ nvidia_container_runtime_specific_version | regex_search('([^*]*)') }}*"
     state: present
   when: not ansible_check_mode
