@@ -1,0 +1,1 @@
+nvidia_container_runtime_specific_version: "{{ nvidia_container_runtime_version }}+docker{{ nvidia_container_runtime_docker_version | regex_replace('^(?:\\d+:)?(.*)$', '\\1') }}-1"
