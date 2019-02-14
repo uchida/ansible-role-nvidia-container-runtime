@@ -11,5 +11,10 @@
       nvidia_container_runtime_docker_version: 17.12.0
       when: ansible_distribution_version == "xenial"
     - role: ansible-role-nvidia-container-runtime
+      nvidia_container_runtime_version: 2.0.0
+      nvidia_container_runtime_docker_version: "5:18.09.2~3-0~{{ ansible_distribution }}-{{ ansible_distribution_release }}"
+      nvidia_container_runtime_revision: 1
+    - role: ansible-role-nvidia-container-runtime
+      nvidia_container_runtime_version: 2.0.0
       nvidia_container_runtime_docker_version: 5:18.09.2*
     - role: ansible-role-nvidia-container-runtime
