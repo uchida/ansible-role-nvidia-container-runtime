@@ -28,8 +28,15 @@
     nvidia_container_runtime_apt_repo_exists: "{{ nvidia_container_runtime_apt_repo_exists|default(true) and not item.changed|default(true) }}"
   with_items: "{{ nvidia_container_runtime_apt_repo.results }}"
 
+- name: check docker package selection
+  command: dpkg --get-selections nvidia-container-runtime
+  register: nvidia_container_runtime_selection
+  changed_when: false
+  check_mode: no
+
 - name: nvidia-container-runtime is installed
   apt:
     name: "nvidia-container-runtime={{ nvidia_container_runtime_specific_version | regex_search('([^*]*)') }}*"
     state: present
   when: not ansible_check_mode or nvidia_container_runtime_apt_repo_exists
+  ignore_errors: ansible_check_mode and 'hold' in nvidia_container_runtime_selection.stdout
