@@ -1,3 +1,3 @@
 nvidia_container_runtime_major_version: "{{ nvidia_container_runtime_version.split('.') | first }}"
 nvidia_container_runtime_specific_version_for_v1_v2: "{{ nvidia_container_runtime_version }}+docker{{ nvidia_container_runtime_docker_version | regex_replace('^(?:\\d+:)?(.*?)(?:~.*)?$', '\\1') }}-{{ nvidia_container_runtime_revision }}"
-nvidia_container_runtime_specific_version: "{{ nvidia_container_runtime_specific_version_for_v1_v2 if nvidia_container_runtime_major_version else nvidia_container_runtime_version }}"
+nvidia_container_runtime_specific_version: "{{ nvidia_container_runtime_specific_version_for_v1_v2 if nvidia_container_runtime_major_version in ['1', '2'] else nvidia_container_runtime_version }}"
